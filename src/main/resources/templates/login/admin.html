@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+</head>
+<body>
+<h1>管理员登录</h1>
+<form action="/admin/login/do" method="post">
+    <p style="color: white" >账户:admin,密码:admin</p>
+    <p>账户： <input type="text" name="account" /></p>
+    <p>密码： <input type="password" name="password" maxlength="20" required οnblur="checkPwd(this.value)"></p>
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>
