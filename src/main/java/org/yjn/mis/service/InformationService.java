@@ -1,5 +1,6 @@
 package org.yjn.mis.service;
 
+import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.yjn.mis.dao.InformationDao;
@@ -15,6 +16,10 @@ public class InformationService {
 
     public List<Information> getInformation() {
         return informationDao.select();
+    }
 
+    public List<Information> getIdInformation(int id) {
+        System.out.println(id);
+        return informationDao.selectId(id);
     }
 }

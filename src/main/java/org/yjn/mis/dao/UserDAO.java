@@ -7,9 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-/**
- * Created by nowcoder on 2018/08/04 下午3:41
- */
+
 @Mapper
 public interface UserDAO {
 

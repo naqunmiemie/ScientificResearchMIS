@@ -18,7 +18,7 @@
     </table>
     <#else>
     <h5>未登录！<a href="/users/login">登陆/</a><a href="/users/register">注册</a></h5>
-    </#if>
+</#if>
 
 <table border="1" cellpadding="10">
     <tr>
@@ -30,11 +30,10 @@
         <td>邮箱</td>
         <td>学院</td>
         <td>研究方向</td>
-        <td></td>
     </tr>
     <#list information as information>
     <tr>
-        <#if information.state == 1>
+<!--        <#if information.state == 1>-->
         <td><a>${information.id}</a></td>
         <td>${information.university}</td>
         <td>${information.name}</td>
@@ -43,10 +42,9 @@
         <td>${information.mailbox!}</td>
         <td>${information.college!}</td>
         <td>${information.researchDirection!}</td>
-        <td><a href="/details/${information.id}/user">查看详情</a></td>
-        </#if>
+<!--    </#if>-->
     </tr>
-    </#list>
+</#list>
 
 </table>
 
