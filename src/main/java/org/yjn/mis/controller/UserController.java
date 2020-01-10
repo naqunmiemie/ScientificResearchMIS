@@ -23,12 +23,14 @@ public class UserController {
         User host = hostHolder.getUser();
         if (host != null) {
             model.addAttribute("host", host);
+        }else {
+            return "/index";
         }
-        loadAllInformationView(model);
+        loadInformationView(model);
         return "operation/user";
     }
 
-    private void loadAllInformationView(Model model) {
-        model.addAttribute("information", informationService.getAllInformation());
+    private void loadInformationView(Model model) {
+        model.addAttribute("information", informationService.getInformation());
     }
 }

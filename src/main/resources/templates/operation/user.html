@@ -29,20 +29,25 @@
         <td>职称</td>
         <td>邮箱</td>
         <td>学院</td>
-<!--        <td colspan="2" align="center"><a href="/books/add" target="_blank">Add</a></td>-->
+        <td>研究方向</td>
+        <td></td>
     </tr>
     <#list information as information>
     <tr>
+        <#if information.state == 1>
         <td><a>${information.id}</a></td>
         <td>${information.university}</td>
         <td>${information.name}</td>
-        <td>${information.phoneNumber}</td>
-        <td>${information.title}</td>
-        <td>${information.mailbox}</td>
-        <td>${information.college}</td>
-<!--        <td><#if book.status == 0> 在库 <#elseif book.status == 1> 已借出 </#if></td>-->
+        <td>${information.phoneNumber!}</td>
+        <td>${information.title!}</td>
+        <td>${information.mailbox!}</td>
+        <td>${information.college!}</td>
+        <td>${information.researchDirection!}</td>
+        <td>查看详情</td>
+        </#if>
     </tr>
     </#list>
+
 </table>
 
 </div>

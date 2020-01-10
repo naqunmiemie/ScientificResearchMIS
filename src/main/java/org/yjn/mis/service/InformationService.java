@@ -13,8 +13,8 @@ public class InformationService {
     @Autowired
     private InformationDao informationDao;
 
-    public List<Information> getAllInformation() {
-        return informationDao.selectAll();
+    public List<Information> getInformation() {
+        return informationDao.select();
 
     }
 }

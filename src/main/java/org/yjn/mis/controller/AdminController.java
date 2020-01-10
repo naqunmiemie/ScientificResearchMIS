@@ -19,6 +19,8 @@ public class AdminController {
         User host = hostHolder.getUser();
         if (host != null) {
             model.addAttribute("host", host);
+        }else {
+            return "/index";
         }
         return "operation/admin";
     }
