@@ -20,6 +20,30 @@
     <h5>未登录！<a href="/users/login">登陆/</a><a href="/users/register">注册</a></h5>
     </#if>
 
+<table border="1" cellpadding="10">
+    <tr>
+        <td>ID</td>
+        <td>学校</td>
+        <td>姓名</td>
+        <td>电话号码</td>
+        <td>职称</td>
+        <td>邮箱</td>
+        <td>学院</td>
+<!--        <td colspan="2" align="center"><a href="/books/add" target="_blank">Add</a></td>-->
+    </tr>
+    <#list information as information>
+    <tr>
+        <td><a>${information.id}</a></td>
+        <td>${information.university}</td>
+        <td>${information.name}</td>
+        <td>${information.phoneNumber}</td>
+        <td>${information.title}</td>
+        <td>${information.mailbox}</td>
+        <td>${information.college}</td>
+<!--        <td><#if book.status == 0> 在库 <#elseif book.status == 1> 已借出 </#if></td>-->
+    </tr>
+    </#list>
+</table>
 
 </div>
 </body>

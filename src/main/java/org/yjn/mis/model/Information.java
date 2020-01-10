@@ -2,7 +2,7 @@ package org.yjn.mis.model;
 
 import java.util.Date;
 
-public class information {
+public class Information {
     private int id;
     private String university;
 

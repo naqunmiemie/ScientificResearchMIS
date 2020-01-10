@@ -7,11 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.yjn.mis.model.User;
 import org.yjn.mis.service.HostHolder;
+import org.yjn.mis.service.InformationService;
 
 @Controller
 public class UserController {
     @Autowired
     private HostHolder hostHolder;
+
+    @Autowired
+    private InformationService informationService;
 
     @RequestMapping(path = {"/operation/user"}, method = {RequestMethod.GET})
     public String OperationUser(Model model) {
@@ -20,6 +24,11 @@ public class UserController {
         if (host != null) {
             model.addAttribute("host", host);
         }
+        loadAllInformationView(model);
         return "operation/user";
+    }
+
+    private void loadAllInformationView(Model model) {
+        model.addAttribute("information", informationService.getAllInformation());
     }
 }
