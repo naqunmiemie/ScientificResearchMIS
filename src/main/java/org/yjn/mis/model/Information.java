@@ -142,11 +142,11 @@ public class Information {
         this.awards = awards;
     }
 
-    public Date getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -173,6 +173,6 @@ public class Information {
     private String monograph;
     private String patent;
     private String awards;
-    private Date updateTime;
+    private String updateTime;
     private int state;
 }
