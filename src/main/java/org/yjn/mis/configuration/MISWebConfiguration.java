@@ -1,5 +1,6 @@
 package org.yjn.mis.configuration;
 
+import org.yjn.mis.interceptor.AdminLoginInterceptor;
 import org.yjn.mis.interceptor.HostInfoInterceptor;
 import org.yjn.mis.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class MISWebConfiguration implements WebMvcConfigurer {
   private LoginInterceptor loginInterceptor;
 
   @Autowired
+  private AdminLoginInterceptor adminLoginInterceptor;
+
+  @Autowired
   private HostInfoInterceptor hostInfoInterceptor;
 
   @Bean
@@ -26,10 +30,12 @@ public class MISWebConfiguration implements WebMvcConfigurer {
       @Override
       public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(hostInfoInterceptor).addPathPatterns("/**");
-//        registry.addInterceptor(loginInterceptor).addPathPatterns("/operation/**");
-//        registry.addInterceptor(loginInterceptor).addPathPatterns("/details/**");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/user/**")
+                .excludePathPatterns("/user/login/**").excludePathPatterns("/user/register/**");
+        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/login/**").excludePathPatterns("/admin/register/**");
+
       }
     };
   }
-
 }

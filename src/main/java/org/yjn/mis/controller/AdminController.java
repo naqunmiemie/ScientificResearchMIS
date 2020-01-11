@@ -20,27 +20,23 @@ public class AdminController {
     @Autowired
     private InformationService informationService;
 
-    @RequestMapping(path = {"/operation/admin"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/admin/operation"}, method = {RequestMethod.GET})
     public String OperationAdmin(Model model) {
 
         User host = hostHolder.getUser();
         if (host != null) {
             model.addAttribute("host", host);
-        }else {
-            return "/index";
         }
         loadInformationView(model);
         return "operation/admin";
     }
 
-    @RequestMapping(path = {"/details/{informationId}/admin"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/admin/details/{informationId}"}, method = {RequestMethod.GET})
     public String DetailsUAdmin(Model model,@PathVariable("informationId") int informationId) {
 
         User host = hostHolder.getUser();
         if (host != null) {
             model.addAttribute("host", host);
-        }else {
-            return "/index";
         }
         loadIdInformationView(model,informationId);
         return "details/admin";
@@ -90,16 +86,16 @@ public class AdminController {
         information.setAwards(awards);
         informationService.addinformation(information);
 
-        return "redirect:/operation/admin";
+        return "redirect:/admin/operation";
     }
 
-    @RequestMapping(path = {"/change/state/{informationId}/{informationState}"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/admin/change/state/{informationId}/{informationState}"}, method = {RequestMethod.GET})
     public String changeState(
             @PathVariable("informationId") int informationId,
             @PathVariable("informationState") int informationState
     ) {
         informationService.changeState(informationId,informationState);
-        return "redirect:/details/{informationId}/admin";
+        return "redirect:/admin/details/{informationId}";
     }
 
     private void loadInformationView(Model model) {

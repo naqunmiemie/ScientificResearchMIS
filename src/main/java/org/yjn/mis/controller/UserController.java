@@ -18,27 +18,23 @@ public class UserController {
     @Autowired
     private InformationService informationService;
 
-    @RequestMapping(path = {"/operation/user"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/user/operation"}, method = {RequestMethod.GET})
     public String OperationUser(Model model) {
 
         User host = hostHolder.getUser();
         if (host != null) {
             model.addAttribute("host", host);
-        }else {
-            return "/index";
         }
         loadInformationView(model);
         return "operation/user";
     }
 
-    @RequestMapping(path = {"/details/{informationId}/user"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/user/details/{informationId}"}, method = {RequestMethod.GET})
     public String DetailsUser(Model model,@PathVariable("informationId") int informationId) {
 
         User host = hostHolder.getUser();
         if (host != null) {
             model.addAttribute("host", host);
-        }else {
-            return "/index";
         }
         loadIdInformationView(model,informationId);
         return "details/user";

@@ -2,7 +2,6 @@ package org.yjn.mis.controller;
 
 import org.yjn.mis.biz.LoginBiz;
 import org.yjn.mis.model.User;
-import org.yjn.mis.service.UserService;
 import org.yjn.mis.utils.CookieUtils;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +19,14 @@ public class LoginUserController {
   @Autowired
   private LoginBiz loginBiz;
 
-  @Autowired
-  private UserService userService;
-
-  @RequestMapping(path = {"/users/register"}, method = {RequestMethod.GET})
+  @RequestMapping(path = {"/user/register"}, method = {RequestMethod.GET})
   public String register() {
     return "login/register";
   }
 
-  @RequestMapping(path = {"/users/register/do"}, method = {RequestMethod.POST})
+  @RequestMapping(path = {"/user/register/do"}, method = {RequestMethod.POST})
   public String doRegister(
       Model model,
-      HttpServletResponse response,
       @RequestParam("name") String name,
       @RequestParam("email") String email,
       @RequestParam("password") String password
@@ -43,8 +38,7 @@ public class LoginUserController {
     user.setPassword(password);
 
     try {
-      String t = loginBiz.register(user);
-      CookieUtils.writeCookie("t", t, response);
+      loginBiz.register(user);
       return "redirect:/index";
     } catch (Exception e) {
       model.addAttribute("error", e.getMessage());
@@ -52,12 +46,12 @@ public class LoginUserController {
     }
   }
 
-  @RequestMapping(path = {"/users/login"}, method = {RequestMethod.GET})
+  @RequestMapping(path = {"/user/login"}, method = {RequestMethod.GET})
   public String login() {
     return "login/user";
   }
 
-  @RequestMapping(path = {"/users/login/do"}, method = {RequestMethod.POST})
+  @RequestMapping(path = {"/user/login/do"}, method = {RequestMethod.POST})
   public String doLogin(
           Model model,
           HttpServletResponse response,
@@ -67,14 +61,14 @@ public class LoginUserController {
     try {
       String t = loginBiz.login(email, password);
       CookieUtils.writeCookie("t", t, response);
-      return "redirect:/operation/user";
+      return "redirect:/user/operation";
     } catch (Exception e) {
       model.addAttribute("error", e.getMessage());
       return "404";
     }
   }
 
-  @RequestMapping(path = {"/users/logout/do"}, method = {RequestMethod.GET})
+  @RequestMapping(path = {"/user/logout/do"}, method = {RequestMethod.GET})
   public String doLogout(
       @CookieValue("t") String t
   ) {

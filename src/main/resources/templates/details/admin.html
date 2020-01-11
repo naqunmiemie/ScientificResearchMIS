@@ -8,20 +8,23 @@
 <div align="center">
     <h3>科研管理信息系统</h3>
     <h4 id="status"></h4>
-
+    <#if host??>
     <table cellpadding="10">
         <tr>
             <td>欢迎管理员</td>
-            <td><a href="/users/logout/do">退出登录</a></td>
-            <td><a href="/operation/admin">返回</a></td>
+            <td><a href="/admin/logout/do">退出登录</a></td>
+            <td><a href="/admin/operation">返回</a></td>
         </tr>
     </table>
-
+    </#if>
 </div>
 <#list information as information>
-<h3><a href="/change/state/${information.id}/${information.state}"><#if information.state == 1> 删除
-    <#elseif information.state == 0> 重新插入该信息 </#if></a></h3>
-<h3><a>ID：</a>${information.id}</h3>
+
+<h3><a>ID：</a>${information.id}
+    <a href="/admin/change/state/${information.id}/${information.state}"><#if information.state == 1> 删除
+        <#elseif information.state == 0> 添加 </#if></a>
+    <a href="/admin/change/information/${information.id}/${information.state}">编辑</a>
+</h3>
 <h3><a>学校：</a>${information.university}</h3>
 <h3><a>姓名：</a>${information.name}</h3>
 <h3><a>电话号码：</a>${information.phoneNumber!}</h3>

@@ -13,7 +13,7 @@
     <table cellpadding="10">
         <tr>
             <td>欢迎管理员</td>
-            <td><a href="/users/logout/do">退出登录</a></td>
+            <td><a href="/admin/logout/do">退出登录</a></td>
         </tr>
     </table>
 </#if>
@@ -42,7 +42,7 @@
         <td>${information.college!}</td>
         <td>${information.researchDirection!}</td>
         <td><#if information.state == 1> 正常 <#elseif information.state == 0> 已删除 </#if></td>
-        <td><a href="/details/${information.id}/admin">编辑详情</a></td>
+        <td><a href="/admin/details/${information.id}">编辑详情</a></td>
     </tr>
     </#list>
 

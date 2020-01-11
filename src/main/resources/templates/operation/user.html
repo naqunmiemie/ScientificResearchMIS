@@ -13,7 +13,7 @@
     <table cellpadding="10">
         <tr>
             <td>欢迎${host.name}</td>
-            <td><a href="/users/logout/do">退出登录</a></td>
+            <td><a href="/user/logout/do">退出登录</a></td>
         </tr>
     </table>
     </#if>
@@ -41,7 +41,7 @@
         <td>${information.mailbox!}</td>
         <td>${information.college!}</td>
         <td>${information.researchDirection!}</td>
-        <td><a href="/details/${information.id}/user">查看详情</a></td>
+        <td><a href="/user/details/${information.id}">查看详情</a></td>
         </#if>
     </tr>
     </#list>

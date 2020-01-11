@@ -26,13 +26,11 @@ public class LoginBiz {
 
 //  验证管理员登录账户密码
   public String AdminLogin(String account,String password) throws Exception{
-    if (account.equals("admin")){
-      if (password.equals("admin")){
-        return "admin";
-      }else throw new LoginRegisterException("密码不正确");
-    }else throw new LoginRegisterException("账户不正确");
-  }
+    if (!account.equals("admin")) throw new LoginRegisterException("账户不正确");
+    if (!password.equals("admin")) throw new LoginRegisterException("密码不正确");
 
+    return "admin";
+  }
 
 
   /**
@@ -82,7 +80,7 @@ public class LoginBiz {
    *
    * @return 用户当前的t票
    */
-  public String register(User user) throws Exception {
+  public void register(User user) throws Exception {
 
     //信息检查
     if (userService.getUser(user.getEmail()) != null) {
@@ -95,14 +93,6 @@ public class LoginBiz {
     user.setPassword(md5);
     //数据库添加用户
     userService.addUser(user);
-
-    //生成用户t票
-    Ticket ticket = TicketUtils.next(user.getId());
-    //数据库添加t票
-    ticketService.addTicket(ticket);
-
-    ConcurrentUtils.setHost(user);
-    return ticket.getTicket();
 
   }
 
