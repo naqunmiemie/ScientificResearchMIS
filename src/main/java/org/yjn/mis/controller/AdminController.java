@@ -49,6 +49,7 @@ public class AdminController {
 
     @RequestMapping(path = {"/add/do"}, method = {RequestMethod.POST})
     public String doAdd(
+            Model model,
             @RequestParam("university") String university,
             @RequestParam("name") String name,
             @RequestParam("phoneNumber") String phoneNumber,
@@ -65,8 +66,17 @@ public class AdminController {
             @RequestParam("monograph") String monograph,
             @RequestParam("patent") String patent,
             @RequestParam("awards") String awards
-    ) {
+    ){
 
+
+        if (university.length() == 0){
+            model.addAttribute("error", "未完成基本信息-学校");
+            return "404";
+        }
+        if (name.length() == 0){
+            model.addAttribute("error", "未完成基本信息-姓名");
+            return "404";
+        }
         Information information = new Information();
         information.setUniversity(university);
         information.setName(name);
