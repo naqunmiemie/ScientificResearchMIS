@@ -88,18 +88,18 @@ public class AdminController {
         information.setMonograph(monograph);
         information.setPatent(patent);
         information.setAwards(awards);
+        informationService.addinformation(information);
 
-        return "/operation/admin";
+        return "redirect:/operation/admin";
     }
 
-    @RequestMapping(path = {"/change/state/{informationId}"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/change/state/{informationId}/{informationState}"}, method = {RequestMethod.GET})
     public String changeState(
-            @PathVariable("informationId") int informationId
+            @PathVariable("informationId") int informationId,
+            @PathVariable("informationState") int informationState
     ) {
-
-        informationService.changeState(informationId);
-        return "/details/{informationId}/admin";
-
+        informationService.changeState(informationId,informationState);
+        return "redirect:/details/{informationId}/admin";
     }
 
     private void loadInformationView(Model model) {

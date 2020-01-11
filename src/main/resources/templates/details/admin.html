@@ -18,9 +18,8 @@
     </table>
 
 </div>
-
 <#list information as information>
-<h3><a href="/change/state"><#if information.state == 1> 删除
+<h3><a href="/change/state/${information.id}/${information.state}"><#if information.state == 1> 删除
     <#elseif information.state == 0> 重新插入该信息 </#if></a></h3>
 <h3><a>ID：</a>${information.id}</h3>
 <h3><a>学校：</a>${information.university}</h3>

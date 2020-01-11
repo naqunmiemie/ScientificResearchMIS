@@ -29,13 +29,13 @@ public interface InformationDao {
                     "`research_direction`,`courses`,`scientific_research_item`," +
                     "`monograph`,`patent`,`awards`) " +
             "values " +
-                    "(#{university},#{name},#{phone_number},#{title},#{mailbox},#{college}," +
-                    "#{lab},#{resume},#{education_experience},#{work_experience}," +
-                    "#{research_direction},#{courses},#{scientific_research_item}," +
+                    "(#{university},#{name},#{phoneNumber},#{title},#{mailbox},#{college}," +
+                    "#{lab},#{resume},#{educationExperience},#{workExperience}," +
+                    "#{researchDirection},#{courses},#{scientificResearchItem}," +
                     "#{monograph},#{patent},#{awards})"})
     int add(Information information);
 
     @Update({"update ", table_name, " set state=#{state} where id=#{id}"})
-    void changeState(@Param("id") int id);
+    void changeState(@Param("id") int id,@Param("state") int state);
 
 }

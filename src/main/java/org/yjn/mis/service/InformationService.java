@@ -26,7 +26,8 @@ public class InformationService {
         return informationDao.add(information);
     }
 
-    public void changeState(int id) {
-        informationDao.changeState(id);
+    public void changeState(int id, int state) {
+        state = Math.abs(state - 1);
+        informationDao.changeState(id,state);
     }
 }
