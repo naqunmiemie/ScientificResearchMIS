@@ -34,7 +34,7 @@ public class AdminController {
     }
 
     @RequestMapping(path = {"/details/{informationId}/admin"}, method = {RequestMethod.GET})
-    public String DetailsUser(Model model,@PathVariable("informationId") int informationId) {
+    public String DetailsUAdmin(Model model,@PathVariable("informationId") int informationId) {
 
         User host = hostHolder.getUser();
         if (host != null) {
@@ -90,6 +90,15 @@ public class AdminController {
         information.setAwards(awards);
 
         return "/operation/admin";
+    }
+
+    @RequestMapping(path = {"/change/state/{informationId}"}, method = {RequestMethod.GET})
+    public String changeState(
+            @PathVariable("informationId") int informationId
+    ) {
+
+        informationService.changeState(informationId);
+        return "/details/{informationId}/admin";
 
     }
 

@@ -1,9 +1,6 @@
 package org.yjn.mis.dao;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.yjn.mis.model.Information;
 
 import java.util.List;
@@ -38,5 +35,7 @@ public interface InformationDao {
                     "#{monograph},#{patent},#{awards})"})
     int add(Information information);
 
+    @Update({"update ", table_name, " set state=#{state} where id=#{id}"})
+    void changeState(@Param("id") int id);
 
 }
