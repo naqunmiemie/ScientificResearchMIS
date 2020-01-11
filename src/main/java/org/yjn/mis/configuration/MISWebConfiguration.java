@@ -27,6 +27,7 @@ public class MISWebConfiguration implements WebMvcConfigurer {
       public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(hostInfoInterceptor).addPathPatterns("/**");
 //        registry.addInterceptor(loginInterceptor).addPathPatterns("/operation/**");
+//        registry.addInterceptor(loginInterceptor).addPathPatterns("/details/**");
       }
     };
   }

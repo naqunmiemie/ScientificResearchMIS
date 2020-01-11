@@ -22,9 +22,6 @@ public class LoginAdminController {
     @Autowired
     private LoginBiz loginBiz;
 
-    @Autowired
-    private UserService userService;
-
     @RequestMapping(path = {"/admin/login"}, method = {RequestMethod.GET})
     public String login() {
         return "login/admin";

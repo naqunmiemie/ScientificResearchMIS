@@ -1,5 +1,6 @@
 package org.yjn.mis.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -23,6 +24,19 @@ public interface InformationDao {
 
     @Select({"select", detailed_information, "from", table_name, "where id = #{id}"})
     List<Information> selectId(@Param("id") int id);
+
+
+    @Insert({"insert into", table_name,
+            "(`university`,`name`,`phone_number`,`title`,`mailbox`,`college`," +
+                    "`lab`,`resume`,`education_experience`,`work_experience`," +
+                    "`research_direction`,`courses`,`scientific_research_item`," +
+                    "`monograph`,`patent`,`awards`) " +
+            "values " +
+                    "(#{university},#{name},#{phone_number},#{title},#{mailbox},#{college}," +
+                    "#{lab},#{resume},#{education_experience},#{work_experience}," +
+                    "#{research_direction},#{courses},#{scientific_research_item}," +
+                    "#{monograph},#{patent},#{awards})"})
+    int add(Information information);
 
 
 }

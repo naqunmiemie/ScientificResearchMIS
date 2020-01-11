@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>科研管理信息系统</title>
 </head>
 <body>
+<div align="center">
+    <h3>科研管理信息系统</h3>
+    <h4 id="status"></h4>
+
+    <#if host??>
+    <table cellpadding="10">
+        <tr>
+            <td>欢迎管理员</td>
+            <td><a href="/users/logout/do">退出登录</a></td>
+            <td><a href="/operation/admin">返回</a></td>
+        </tr>
+    </table>
+</#if>
+</div>
+
+<#list information as information>
+<h3><a>学校：</a>${information.university}</h3>
+<h3><a>姓名：</a>${information.name}</h3>
+<h3><a>电话号码：</a>${information.phoneNumber!}</h3>
+<h3><a>职称：</a>${information.title!}</h3>
+<h3><a>邮箱：</a>${information.mailbox!}</h3>
+<h3><a>学院：</a>${information.college!}</h3>
+<h3><a>实验室：</a>${information.lab!}</h3>
+<h3><a>基本情况：</a>${information.resume!}</h3>
+<h3><a>教育经历：</a>${information.educationExperience!}</h3>
+<h3><a>工作经历：</a>${information.workExperience!}</h3>
+<h3><a>研究方向：</a>${information.researchDirection!}</h3>
+<h3><a>开设课程：</a>${information.courses!}</h3>
+<h3><a>科研项目：</a>${information.scientificResearchItem!}</h3>
+<h3><a>专著论文：</a>${information.monograph!}</h3>
+<h3><a>专利：</a>${information.patent!}</h3>
+<h3><a>获奖：</a>${information.awards!}</h3>
+<h3><a>更新时间：</a>${information.updateTime}</h3>
+</#list>
+
+
 
 </body>
 </html>

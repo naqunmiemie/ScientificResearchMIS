@@ -19,7 +19,10 @@ public class InformationService {
     }
 
     public List<Information> getIdInformation(int id) {
-        System.out.println(id);
         return informationDao.selectId(id);
+    }
+
+    public int addinformation(Information information) {
+        return informationDao.add(information);
     }
 }
