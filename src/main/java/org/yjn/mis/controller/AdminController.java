@@ -66,7 +66,7 @@ public class AdminController {
             @RequestParam("monograph") String monograph,
             @RequestParam("patent") String patent,
             @RequestParam("awards") String awards
-    ){
+    ) {
         if (university.length() == 0){
             model.addAttribute("error", "未完成基本信息-学校");
             return "404";
