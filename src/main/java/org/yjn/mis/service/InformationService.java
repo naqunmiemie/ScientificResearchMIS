@@ -22,12 +22,16 @@ public class InformationService {
         return informationDao.selectId(id);
     }
 
-    public int addinformation(Information information) {
-        return informationDao.add(information);
+    public void addInformation(Information information) {
+        informationDao.add(information);
     }
 
     public void changeState(int id, int state) {
         state = Math.abs(state - 1);
         informationDao.changeState(id,state);
+    }
+
+    public void changeInformation(Information information) {
+        informationDao.change(information);
     }
 }

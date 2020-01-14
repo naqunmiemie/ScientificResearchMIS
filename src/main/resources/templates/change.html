@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>添加信息</title>
+</head>
+<body>
+<h1>编辑信息<a href="/admin/operation">返回</a></h1>
+<#list information as information>
+<form action="/admin/change/do/${information.id}" method="post">
+    <p>学校： <input type="text" name="university" value=${information.university} ></p>
+    <p>姓名： <input type="text" name="name"  value=${information.name} ></p>
+    <p>电话号码： <input type="tel" name="phoneNumber" value=${information.phoneNumber!} ></p>
+    <p>职称： <input type="text" name="title" value=${information.title!} ></p>
+    <p>邮箱： <input type="email" name="mailbox" value=${information.mailbox!} ></p>
+    <p>学院： <input type="text" name="college" value=${information.college!} ></p>
+    <p>实验室： <input type="text" name="lab" value=${information.lab!} ></p>
+    <p>基本情况： <input type="text" name="resume" value=${information.resume!} ></p>
+    <p>教育经历： <input type="text" name="educationExperience" value=${information.educationExperience!} ></p>
+    <p>工作经历： <input type="text" name="workExperience" value=${information.workExperience!} ></p>
+    <p>研究方向： <input type="text" name="researchDirection" value=${information.researchDirection!} ></p>
+    <p>开设课程： <input type="text" name="courses" value=${information.courses!} ></p>
+    <p>科研项目： <input type="text" name="scientificResearchItem" value=${information.scientificResearchItem!} ></p>
+    <p>专著论文： <input type="text" name="monograph" value=${information.monograph!} ></p>
+    <p>专利： <input type="text" name="patent" value=${information.patent!} ></p>
+    <p>获奖： <input type="text" name="awards" value=${information.awards!} ></p>
+    <input type="submit" value="Submit" />
+</form>
+</#list>
+</body>
+</html>

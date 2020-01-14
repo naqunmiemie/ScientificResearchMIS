@@ -33,9 +33,20 @@ public interface InformationDao {
                     "#{lab},#{resume},#{educationExperience},#{workExperience}," +
                     "#{researchDirection},#{courses},#{scientificResearchItem}," +
                     "#{monograph},#{patent},#{awards})"})
-    int add(Information information);
+    void add(Information information);
 
     @Update({"update ", table_name, " set state=#{state} where id=#{id}"})
     void changeState(@Param("id") int id,@Param("state") int state);
+
+    @Update({"update", table_name, "set university = #{university}," +
+            "name = #{name}, phone_number = #{phoneNumber}, " +
+            "title = #{title}, mailbox = #{mailbox}, " +
+            "college = #{college}, lab = #{lab}, " +
+            "resume = #{resume}, education_experience = #{educationExperience}," +
+            "work_experience = #{workExperience}, research_direction = #{researchDirection}, " +
+            "courses = #{courses}, scientific_research_item = #{scientificResearchItem}, " +
+            "monograph = #{monograph}, patent = #{patent}, awards = #{awards} " +
+            "where id = #{id}"})
+    void change(Information information);
 
 }

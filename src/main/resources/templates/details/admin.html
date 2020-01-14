@@ -21,9 +21,9 @@
 <#list information as information>
 
 <h3><a>ID：</a>${information.id}
-    <a href="/admin/change/state/${information.id}/${information.state}"><#if information.state == 1> 删除
+    <a href="/admin/state/${information.id}/${information.state}"><#if information.state == 1> 删除
         <#elseif information.state == 0> 添加 </#if></a>
-    <a href="/admin/change/information/${information.id}/${information.state}">编辑</a>
+    <a href="/admin/change/${information.id}">编辑</a>
 </h3>
 <h3><a>学校：</a>${information.university}</h3>
 <h3><a>姓名：</a>${information.name}</h3>
