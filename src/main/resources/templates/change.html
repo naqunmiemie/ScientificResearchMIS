@@ -5,8 +5,8 @@
     <title>添加信息</title>
 </head>
 <body>
-<h1>编辑信息<a href="/admin/operation">返回</a></h1>
 <#list information as information>
+<h1>编辑信息 <div style="float: right"> <a href="/admin/details/${information.id}">返回</a> </div> </h1>
 <form action="/admin/change/do/${information.id}" method="post">
     <p>学校： <input type="text" name="university" value=${information.university} ></p>
     <p>姓名： <input type="text" name="name"  value=${information.name} ></p>
