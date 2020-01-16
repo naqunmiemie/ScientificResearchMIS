@@ -22,6 +22,8 @@ public interface InformationDao {
     @Select({"select", detailed_information, "from", table_name, "where id = #{id}"})
     List<Information> selectId(@Param("id") int id);
 
+    @Select({"select", detailed_information, "from", table_name, "where ${options} like '${keyword}'"})
+    List<Information> normalSearch(@Param("options") String options,@Param("keyword") String keyword);
 
     @Insert({"insert into", table_name,
             "(`university`,`name`,`phone_number`,`title`,`mailbox`,`college`," +

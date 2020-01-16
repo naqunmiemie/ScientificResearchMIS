@@ -22,6 +22,19 @@ public class InformationService {
         return informationDao.selectId(id);
     }
 
+    public List<Information> normalSearch(String options, String keyword) {
+        if (options.equals("id")){
+            return informationDao.normalSearch(options,keyword);
+        }
+        String[] keywordList = keyword.split(" ");
+        StringBuilder Afterword = new StringBuilder("%");
+        for (String i:keywordList){
+            Afterword.append(i).append("%");
+        }
+        System.out.println(options+" "+Afterword);
+        return informationDao.normalSearch(options, Afterword.toString());
+    }
+
     public void addInformation(Information information) {
         informationDao.add(information);
     }
