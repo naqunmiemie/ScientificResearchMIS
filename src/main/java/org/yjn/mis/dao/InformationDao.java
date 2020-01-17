@@ -25,6 +25,15 @@ public interface InformationDao {
     @Select({"select", detailed_information, "from", table_name, "where ${options} like '${keyword}'"})
     List<Information> normalSearch(@Param("options") String options,@Param("keyword") String keyword);
 
+    @Select({"select", detailed_information, "from", table_name, "where university like '${university}'" +
+            "and name like '${name}' and phone_number like '${phoneNumber}' " +
+            "and title like '${title}' and mailbox like '${mailbox}' " +
+            "and college like '${college}' and research_direction like '${researchDirection}'"})
+    List<Information> advancedSearch(@Param("university") String university,@Param("name") String name,
+                                     @Param("phoneNumber") String phoneNumber, @Param("title") String title,
+                                     @Param("mailbox") String mailbox,@Param("college") String college,
+                                     @Param("researchDirection") String researchDirection);
+
     @Insert({"insert into", table_name,
             "(`university`,`name`,`phone_number`,`title`,`mailbox`,`college`," +
                     "`lab`,`resume`,`education_experience`,`work_experience`," +

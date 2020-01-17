@@ -41,7 +41,38 @@ public class SearchUser {
         return "operation/user";
     }
 
+    @RequestMapping(path = {"/user/advancedSearch"}, method = {RequestMethod.GET})
+    public String advancedSearch() {
+        return "advancedSearch/user";
+    }
+
+    @RequestMapping(path = {"/user/advancedSearch/do"}, method = {RequestMethod.POST})
+    public String doAdvancedSearch(
+            Model model,
+            @RequestParam("university") String university,
+            @RequestParam("name") String name,
+            @RequestParam("phoneNumber") String phoneNumber,
+            @RequestParam("title") String title,
+            @RequestParam("mailbox") String mailbox,
+            @RequestParam("college") String college,
+            @RequestParam("researchDirection") String researchDirection
+    ) {
+        User host = hostHolder.getUser();
+        if (host != null) {
+            model.addAttribute("host", host);
+        }
+        loadAdvancedSearchInformationView(model,university,name,phoneNumber,
+                title,mailbox,college,researchDirection);
+        return "operation/user";
+    }
+
     private void loadNormalSearchInformationView(Model model,String options,String keyword) {
         model.addAttribute("information", informationService.normalSearch(options,keyword));
+    }
+
+    private void loadAdvancedSearchInformationView(Model model,String university,String name,String phoneNumber,
+                                                   String title,String mailbox,String college,String researchDirection) {
+        model.addAttribute("information", informationService.advancedSearch(university,name,phoneNumber,
+                title,mailbox,college,researchDirection));
     }
 }

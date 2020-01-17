@@ -25,14 +25,24 @@ public class InformationService {
     public List<Information> normalSearch(String options, String keyword) {
         if (options.equals("id")){
             return informationDao.normalSearch(options,keyword);
+        }else {
+            return informationDao.normalSearch(options,dispose(keyword));
         }
-        String[] keywordList = keyword.split(" ");
-        StringBuilder Afterword = new StringBuilder("%");
+    }
+
+    public List<Information> advancedSearch(String university,String name,String phoneNumber,
+                                            String title,String mailbox,String college,String researchDirection){
+        return informationDao.advancedSearch(dispose(university),dispose(name),dispose(phoneNumber),
+                dispose(title),dispose(mailbox),dispose(college),dispose(researchDirection));
+    }
+
+    private String dispose(String word){
+        String[] keywordList = word.split(" ");
+        StringBuilder sb = new StringBuilder("%");
         for (String i:keywordList){
-            Afterword.append(i).append("%");
+            sb.append(i).append("%");
         }
-        System.out.println(options+" "+Afterword);
-        return informationDao.normalSearch(options, Afterword.toString());
+        return sb.toString();
     }
 
     public void addInformation(Information information) {
